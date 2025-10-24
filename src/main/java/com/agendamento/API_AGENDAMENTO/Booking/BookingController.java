@@ -29,8 +29,8 @@ public class BookingController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<ResponseBooking>> getAllBookings(@RequestBody RoomDto roomName){
-        List<ResponseBooking> bookings =  bookingService.viewBooking(roomName.room());
+    public ResponseEntity<List<ResponseBooking>> getAllBookings(@RequestBody RoomDto dto){
+        List<ResponseBooking> bookings =  bookingService.viewBooking(dto);
         return ResponseEntity.status(HttpStatus.OK).body(bookings);
     }
 

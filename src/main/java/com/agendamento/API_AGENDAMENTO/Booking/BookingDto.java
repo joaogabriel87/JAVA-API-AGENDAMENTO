@@ -14,7 +14,7 @@ public record BookingDto(
         @NotNull LocalDate data,
         @NotNull LocalTime hour_inicial,
         @NotNull LocalTime  hour_final,
-        @NotBlank @Email String emailUser,
+        @NotBlank @Email(message = "Insira um email valido") String emailUser,
         @NotBlank String roomName
         )
 {

@@ -3,7 +3,8 @@ POST http://localhost:8080/api/room
 Content-Type: application/json
 
 {
-  "room": "Sala Reunião 01"
+  "emailUser": "joao.gabriel@email.com",
+  "room": "Sala Reunião 02"
 }
 
 
@@ -27,8 +28,8 @@ Content-Type: application/json
 {
   "title": "Reunião de Alinhamento",
   "data": "2025-10-24",
-  "hour_inicial": "12:00:00",
-  "hour_final": "13:00:00",
+  "hour_inicial": "14:00:00",
+  "hour_final": "15:00:00",
   "emailUser": "joao.gabriel@email.com",
   "roomName": "Sala Reunião 01"
 }
@@ -39,6 +40,7 @@ GET http://localhost:8080/api/booking
 Content-Type: application/json
 
 {
+  "emailUser": "joao.gabriel@email.com",
   "room": "Sala Reunião 01"
 }
 

@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public record UserDto(
         @NotBlank String name,
-        @Email @NotBlank String email,
+        @Email(message = "Insira um email valido") @NotBlank String email,
         @NotBlank String department
 ) {
 }

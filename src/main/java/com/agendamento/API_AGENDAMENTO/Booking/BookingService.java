@@ -4,6 +4,7 @@ import com.agendamento.API_AGENDAMENTO.Erro.BookingNotExist;
 import com.agendamento.API_AGENDAMENTO.Erro.RoomIsOccupied;
 import com.agendamento.API_AGENDAMENTO.Erro.RoomNotExists;
 import com.agendamento.API_AGENDAMENTO.Erro.UserNotExist;
+import com.agendamento.API_AGENDAMENTO.Room.RoomDto;
 import com.agendamento.API_AGENDAMENTO.Room.RoomEntity;
 import com.agendamento.API_AGENDAMENTO.Room.RoomRepository;
 import com.agendamento.API_AGENDAMENTO.User.UserEntity;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -42,13 +44,16 @@ public class BookingService {
     }
 
 
-    public List<ResponseBooking> viewBooking(String roomName){
-        List<BookingEntity> bookings = bookingRepository.findAllByRoomName(roomName);
+    public List<ResponseBooking> viewBooking(RoomDto dto){
+        if (userRepository.findByEmail(dto.emailUser()).isEmpty()){
+            throw new UserNotExist();
+        }
+        List<BookingEntity> bookings = bookingRepository.findAllByRoomName(dto.room());
         if (bookings.isEmpty()){
-            throw  new RoomNotExists();
+            throw  new BookingNotExist();
         }
 
-        return bookings.stream().map(bookingMapper::toResponse).toList();
+        return bookings.stream().filter(x -> Objects.equals(x.getUser().getEmail(), dto.emailUser())).map(bookingMapper::toResponse).toList();
     }
 
     public BookingEntity editBooking(Long id,PatchBookingDto patch){

@@ -22,7 +22,8 @@ RODE O APP(Projeto configurado para rodar na porta 8080)
  POST: /api/room
 
        `{
-       "room": "Sala Reunião 01"
+        "emailUser": "joao.gabriel@email.com",
+        "room": "Sala Reunião 01"
        }`
 
 2. **Criar usuario**
@@ -54,7 +55,8 @@ POST: /api/booking
     GET: /api/booking
 
           `{
-           "room": "Sala Reunião 01"
+            "emailUser": "joao.gabriel@email.com",
+            "room": "Sala Reunião 01"
            }`
 
 
