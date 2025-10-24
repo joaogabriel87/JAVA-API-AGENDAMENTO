@@ -21,7 +21,10 @@ public class GlobalExceptionHandler {
             return ResponseEntity.status(status).body(erroResponse);
     }
 
-
+    @ExceptionHandler(BookingNotExist.class)
+    public ResponseEntity<ErroResponse> handleBookingNotExist(BookingNotExist e){
+        return buildErroResponse(e,HttpStatus.NOT_FOUND,"/booking");
+    }
     @ExceptionHandler(RoomExists.class)
     public ResponseEntity<ErroResponse> handleRoomIsExist(RoomExists e){
             return buildErroResponse(e, HttpStatus.CONFLICT, "/room");

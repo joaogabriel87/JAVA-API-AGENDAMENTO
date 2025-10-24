@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 public interface BookingRepository extends JpaRepository<BookingEntity, Long> {
     @Query("""
@@ -20,4 +21,7 @@ public interface BookingRepository extends JpaRepository<BookingEntity, Long> {
       )
 """)
     boolean existByRoomAndData(RoomEntity room, LocalDate data, LocalTime hourInicial, LocalTime hourFinal);
+
+    @Query("SELECT x FROM BookingEntity x WHERE x.room.roomName = :roomName")
+    List<BookingEntity> findAllByRoomName(String roomName);
 }

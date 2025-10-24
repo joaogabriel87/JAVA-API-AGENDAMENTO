@@ -1,8 +1,14 @@
 package com.agendamento.API_AGENDAMENTO.Room;
 
+import com.agendamento.API_AGENDAMENTO.Booking.ResponseBooking;
 import com.agendamento.API_AGENDAMENTO.Erro.RoomExists;
+import com.agendamento.API_AGENDAMENTO.Erro.RoomNotExists;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoomService {
@@ -18,4 +24,5 @@ public class RoomService {
         }
         return roomRepository.save(entity);
     }
+
 }

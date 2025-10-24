@@ -32,13 +32,12 @@ public class BookingEntity {
     private LocalTime  hour_inicial;
     private LocalTime  hour_final;
     private String title;
-    private Boolean status;
+
 
     public BookingEntity(String title, LocalDate data, LocalTime  hour_inicial, LocalTime  hour_final) {
         this.title = title;
         this.data = data;
         this.hour_inicial = hour_inicial;
         this.hour_final = hour_final;
-        this.status = true;
     }
 }

@@ -25,8 +25,11 @@ public class BookingMapper {
     public ResponseBooking toResponse(BookingEntity booking) {
         return new ResponseBooking(
                 booking.getData(),
+                booking.getHour_inicial(),
+                booking.getHour_final(),
                 booking.getTitle(),
-                booking.getRoom().getRoomName()
+                booking.getRoom().getRoomName(),
+                booking.getUser().getNome()
         );
     }
 }

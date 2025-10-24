@@ -6,7 +6,7 @@ Content-Type: application/json
   "room": "Sala Reunião 01"
 }
 
-###
+
 
 ### Criar Usuário
 POST http://localhost:8080/api/user
@@ -27,8 +27,38 @@ Content-Type: application/json
 {
   "title": "Reunião de Alinhamento",
   "data": "2025-10-24",
-  "hour_inicial": "09:00:00",
-  "hour_final": "10:00:00",
+  "hour_inicial": "12:00:00",
+  "hour_final": "13:00:00",
   "emailUser": "joao.gabriel@email.com",
   "roomName": "Sala Reunião 01"
+}
+
+
+### Consultar as reservas
+GET http://localhost:8080/api/booking
+Content-Type: application/json
+
+{
+  "room": "Sala Reunião 01"
+}
+
+
+### Consultar as reservas
+GET http://localhost:8080/api/booking/all
+Content-Type: application/json
+
+{
+
+}
+
+
+### Editar reserva
+PATCH http://localhost:8080/api/booking/edit/1
+Content-Type: application/json
+
+{
+  "title": "Reunião de Alinhamento 3",
+  "data": "2025-10-24",
+  "hour_inicial": "11:00:00",
+  "hour_final": "12:00:00"
 }
